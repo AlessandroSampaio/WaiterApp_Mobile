@@ -1,3 +1,4 @@
+import { Button } from '../components/Button';
 import { Categories } from '../components/Categories';
 import { Header } from '../components/Header';
 import { Menu } from '../components/Menu';
@@ -7,7 +8,7 @@ export function Main() {
   return (
     <>
       <Container>
-        <Header/>
+        <Header />
         <CategoriesContainer>
           <Categories></Categories>
         </CategoriesContainer>
@@ -16,7 +17,11 @@ export function Main() {
         </MenuContainer>
       </Container>
       <Footer >
-        <FooterContainer></FooterContainer>
+        <FooterContainer>
+          <Button onPress={() => alert('novo pedido')}>
+            Novo Pedido
+          </Button>
+        </FooterContainer>
       </Footer>
     </>
   );
