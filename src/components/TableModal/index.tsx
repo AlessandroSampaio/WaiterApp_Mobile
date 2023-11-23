@@ -3,14 +3,24 @@ import { Body, Form, Header, Input, Overlay } from './styles';
 import { Modal, TouchableOpacity, Platform } from 'react-native';
 import { Close } from '../Icons/Close';
 import { Button } from '../Button';
+import { useState } from 'react';
 
 
 interface TableModalProps {
   visible: boolean;
   onClose: () => void;
+  onSave: (table: string) => void;
 }
 
-export function TableModal({ visible, onClose }: TableModalProps) {
+export function TableModal({ visible, onClose, onSave }: TableModalProps) {
+
+  const [table, setTable] = useState('');
+
+  function handleSave() {
+    onSave(table);
+    onClose();
+  }
+
   return (
     <Modal
       visible={visible}
@@ -30,8 +40,9 @@ export function TableModal({ visible, onClose }: TableModalProps) {
               placeholder='Numero da mesa'
               placeholderTextColor='#666'
               keyboardType="number-pad"
+              onChangeText={setTable}
             />
-            <Button onPress={() => alert('salvou')}>
+            <Button onPress={handleSave}>
               Salvar
             </Button>
           </Form>
