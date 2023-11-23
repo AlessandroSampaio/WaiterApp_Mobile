@@ -17,6 +17,7 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
   const [table, setTable] = useState('');
 
   function handleSave() {
+    setTable('')
     onSave(table);
     onClose();
   }
@@ -42,7 +43,7 @@ export function TableModal({ visible, onClose, onSave }: TableModalProps) {
               keyboardType="number-pad"
               onChangeText={setTable}
             />
-            <Button onPress={handleSave}>
+            <Button onPress={handleSave} disabled={table.length === 0}>
               Salvar
             </Button>
           </Form>
